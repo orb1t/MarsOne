@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		88DDF2A61E33047E009535BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2A51E33047E009535BA /* AppDelegate.swift */; };
-		88DDF2A81E33047E009535BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2A71E33047E009535BA /* ViewController.swift */; };
 		88DDF2AB1E33047E009535BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2A91E33047E009535BA /* Main.storyboard */; };
 		88DDF2AD1E33047E009535BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2AC1E33047E009535BA /* Assets.xcassets */; };
 		88DDF2B01E33047E009535BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2AE1E33047E009535BA /* LaunchScreen.storyboard */; };
 		88DDF2BB1E33047E009535BA /* MarsOneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2BA1E33047E009535BA /* MarsOneTests.swift */; };
 		88DDF2C61E33047E009535BA /* MarsOneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2C51E33047E009535BA /* MarsOneUITests.swift */; };
+		88DDF2D41E33169D009535BA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2D31E33169D009535BA /* LoginViewController.swift */; };
+		88DDF2D61E331B56009535BA /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2D51E331B56009535BA /* BioViewController.swift */; };
+		88DDF2D81E332918009535BA /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2D71E332918009535BA /* Just.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,6 @@
 /* Begin PBXFileReference section */
 		88DDF2A21E33047E009535BA /* MarsOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDF2A51E33047E009535BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88DDF2A71E33047E009535BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88DDF2AA1E33047E009535BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88DDF2AC1E33047E009535BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88DDF2AF1E33047E009535BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		88DDF2C11E33047E009535BA /* MarsOneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarsOneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DDF2C51E33047E009535BA /* MarsOneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsOneUITests.swift; sourceTree = "<group>"; };
 		88DDF2C71E33047E009535BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88DDF2D31E33169D009535BA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		88DDF2D51E331B56009535BA /* BioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
+		88DDF2D71E332918009535BA /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				88DDF2A51E33047E009535BA /* AppDelegate.swift */,
-				88DDF2A71E33047E009535BA /* ViewController.swift */,
 				88DDF2A91E33047E009535BA /* Main.storyboard */,
+				88DDF2D51E331B56009535BA /* BioViewController.swift */,
 				88DDF2AC1E33047E009535BA /* Assets.xcassets */,
 				88DDF2AE1E33047E009535BA /* LaunchScreen.storyboard */,
 				88DDF2B11E33047E009535BA /* Info.plist */,
+				88DDF2D31E33169D009535BA /* LoginViewController.swift */,
+				88DDF2D71E332918009535BA /* Just.swift */,
 			);
 			path = MarsOne;
 			sourceTree = "<group>";
@@ -262,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88DDF2A81E33047E009535BA /* ViewController.swift in Sources */,
+				88DDF2D41E33169D009535BA /* LoginViewController.swift in Sources */,
 				88DDF2A61E33047E009535BA /* AppDelegate.swift in Sources */,
+				88DDF2D61E331B56009535BA /* BioViewController.swift in Sources */,
+				88DDF2D81E332918009535BA /* Just.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
