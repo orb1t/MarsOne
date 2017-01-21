@@ -36,6 +36,8 @@ class BioViewController: UIViewController {
             }
         }()
         
+        self.updateBPM()
+        
         let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
         let heartRate = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
         let distance = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
@@ -64,7 +66,8 @@ class BioViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateOxygen), userInfo: nil, repeats: true)
         self.updateSteps()
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateSteps), userInfo: nil, repeats: true)
-        
+        Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.updateBPM), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     func updateOxygen() {
@@ -80,6 +83,29 @@ class BioViewController: UIViewController {
         if currentOx == 1200 {
             self.presentAlert(title: "ALERT", message: "Low oxygen. Return to base camp immediately!")
         }
+        
+        if currentOx == 0 {
+            self.presentAlert(title: "ALERT", message: "You done got yourself killed.")
+        }
+        
+        if currentOx <= 0 {
+            currentOx = 0
+        }
+    }
+    
+    func updateTime() {        
+        let date = Date()
+        let cal = Calendar(identifier: .gregorian)
+        let midnight = cal.startOfDay(for: date)
+        let sinceMidnight = (NSDate().timeIntervalSince(midnight) * 1.027491252) + 9620
+        
+        let hours = Int(sinceMidnight) / 3600
+        let minutes = Int(sinceMidnight) / 60 % 60
+        let seconds = Int(sinceMidnight) % 60
+        
+        DispatchQueue.main.async {
+            self.timeLbl.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+        }
     }
     
     //let pedometer:CMPedometer! = nil
@@ -94,21 +120,19 @@ class BioViewController: UIViewController {
             
             if let data = data {
                 let numSteps = data.numberOfSteps
-                let distance = data.distance
+                let distance = data.distance!
                 
                 DispatchQueue.main.async {
-                    self.distenceWalked.text = "Distance walked: \(distance) ft"
+                    self.distenceWalked.text = "Distance walked: \(round(Double(distance))) ft"
                     self.stepsWalked.text = "Steps walked: \(numSteps)"
                 }
             }
         })
     }
     
-    
+    var BPMArray = Array<Int>()
     
     func updateBPM() {
-        /*
-        let calendar = NSCalendar.current
         let startDate = NSDate().addingTimeInterval(-86400) as Date
         let endDate = NSDate()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate as Date, options: [])
@@ -123,14 +147,28 @@ class BioViewController: UIViewController {
                                        limit: 25,
                                        sortDescriptors: sortDescriptors,
                                        resultsHandler: {(query, results, error) -> Void in
-                                        let resultsQ = results as? [HKQuantitySample]
-                                        self.distenceWalked.text = "Distance walked: \(resultsQ?.quantity)"
-                                        self.stepsWalked.text = "Steps walked: \(results.numberOfSteps)"
-                                        print("completion called")
+                                        //let resultsQ = results as? [HKQuantitySample]
+                                        if let samples = results as? [HKQuantitySample]
+                                        {
+                                            if let quantity = samples.last?.quantity
+                                            {
+                                                self.BPMArray.append(Int(quantity.doubleValue(for: self.heartRateUnit)))
+                                                var sum = 0
+                                                for i in 0...self.BPMArray.count-1 {
+                                                    sum = sum + self.BPMArray[i]
+                                                }
+                                                let bpmAvg = round(Double(sum/self.BPMArray.count))
+                                                DispatchQueue.main.async {
+                                                    self.currHeartRate.text = "Heart rate: \(round(quantity.doubleValue(for: self.heartRateUnit)))"
+                                                    self.avgHeartRate.text = "Avg heart rate: \(round(bpmAvg))"
+                                                }
+                                            }
+                                        }
+                                        
                                         
         })
         
-        health.execute(heartRateQuery!)*/
+        health.execute(heartRateQuery!)
     }
 
     

@@ -35,6 +35,8 @@
 	</array>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>To steal your identity</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To steal your identity</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>

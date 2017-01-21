@@ -18,6 +18,8 @@
 		88DDF2D81E332918009535BA /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2D71E332918009535BA /* Just.swift */; };
 		88DDF2DC1E336365009535BA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF2DB1E336365009535BA /* HealthKit.framework */; };
 		88DDF2DE1E338C2E009535BA /* MissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2DD1E338C2E009535BA /* MissionsViewController.swift */; };
+		88DDF2E01E340554009535BA /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2DF1E340554009535BA /* WeatherViewController.swift */; };
+		88DDF2E21E340B6C009535BA /* PositioningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DDF2E11E340B6C009535BA /* PositioningViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		88DDF2D91E336365009535BA /* MarsOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarsOne.entitlements; sourceTree = "<group>"; };
 		88DDF2DB1E336365009535BA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		88DDF2DD1E338C2E009535BA /* MissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionsViewController.swift; sourceTree = "<group>"; };
+		88DDF2DF1E340554009535BA /* WeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		88DDF2E11E340B6C009535BA /* PositioningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositioningViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +115,10 @@
 				88DDF2D91E336365009535BA /* MarsOne.entitlements */,
 				88DDF2A51E33047E009535BA /* AppDelegate.swift */,
 				88DDF2A91E33047E009535BA /* Main.storyboard */,
+				88DDF2E11E340B6C009535BA /* PositioningViewController.swift */,
 				88DDF2DD1E338C2E009535BA /* MissionsViewController.swift */,
 				88DDF2D51E331B56009535BA /* BioViewController.swift */,
+				88DDF2DF1E340554009535BA /* WeatherViewController.swift */,
 				88DDF2D31E33169D009535BA /* LoginViewController.swift */,
 				88DDF2AC1E33047E009535BA /* Assets.xcassets */,
 				88DDF2AE1E33047E009535BA /* LaunchScreen.storyboard */,
@@ -291,6 +297,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DDF2DE1E338C2E009535BA /* MissionsViewController.swift in Sources */,
+				88DDF2E01E340554009535BA /* WeatherViewController.swift in Sources */,
+				88DDF2E21E340B6C009535BA /* PositioningViewController.swift in Sources */,
 				88DDF2D41E33169D009535BA /* LoginViewController.swift in Sources */,
 				88DDF2A61E33047E009535BA /* AppDelegate.swift in Sources */,
 				88DDF2D61E331B56009535BA /* BioViewController.swift in Sources */,

@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
             let userData = r.json! as! NSDictionary
             UserDefaults.standard.set(userData["authentication_token"] as! String, forKey: "auth_token")
             UserDefaults.standard.set(userData["email"] as! String, forKey: "email")
+            UserDefaults.standard.set(userData["id"] as! String, forKey: "id")
             self.performSegue(withIdentifier: "login_to_bio", sender: self)
         } else {
             self.presentAlert(title: "Error", message: "Invalid username or password")
