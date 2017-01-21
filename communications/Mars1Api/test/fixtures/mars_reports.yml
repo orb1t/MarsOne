@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  terrestrial_date: MyString
+  sol: 1
+  ls: 1.5
+  min_temp: 1.5
+  min_temp_fahrenheit: 1.5
+  max_temp: 1.5
+  max_temp_fahrenheit: 1.5
+  pressure: 1.5
+  pressure_string: MyString
+  abs_humidity: MyString
+  wind_speed: 1.5
+  wind_direction: MyString
+  atmo_opacity: MyString
+  season: MyString
+  sunrise: MyString
+  sunset: MyString
+
+two:
+  terrestrial_date: MyString
+  sol: 1
+  ls: 1.5
+  min_temp: 1.5
+  min_temp_fahrenheit: 1.5
+  max_temp: 1.5
+  max_temp_fahrenheit: 1.5
+  pressure: 1.5
+  pressure_string: MyString
+  abs_humidity: MyString
+  wind_speed: 1.5
+  wind_direction: MyString
+  atmo_opacity: MyString
+  season: MyString
+  sunrise: MyString
+  sunset: MyString
