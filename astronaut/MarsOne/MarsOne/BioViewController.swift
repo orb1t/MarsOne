@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import HealthKit
+import CoreMotion
 
 class BioViewController: UIViewController {
     
@@ -25,15 +27,49 @@ class BioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Get healthkit data permission
+        let healthStore: HKHealthStore? = {
+            if HKHealthStore.isHealthDataAvailable() {
+                return HKHealthStore()
+            } else {
+                return nil
+            }
+        }()
+        
+        let stepsCount = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+        let heartRate = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+        let distance = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
+        
+        let dataTypesToWrite = NSSet(object: stepsCount)
+        let dataTypesToRead = NSSet(objects: stepsCount, heartRate, distance) //NSSet(object: stepsCount!)
+        
+        healthStore?.requestAuthorization(toShare: dataTypesToWrite as? Set<HKSampleType>,
+                                          read: dataTypesToRead as? Set<HKObjectType>,
+                                                      completion: { [unowned self] (success, error) in
+                                                        if success {
+                                                            print("SUCCESS")
+                                                        } else {
+                                                            
+                                                        }
+        })
+        
+        //Set default O2
         if UserDefaults.standard.object(forKey: "current_oxygen") == nil {
             UserDefaults.standard.set(currentOx, forKey: "current_oxygen")
         }
+        
+        currentOx = UserDefaults.standard.integer(forKey: "current_oxygen")
 
+        //Set update timers
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateOxygen), userInfo: nil, repeats: true)
+        self.updateSteps()
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateSteps), userInfo: nil, repeats: true)
+        
     }
     
     func updateOxygen() {
         currentOx = currentOx - 1
+        UserDefaults.standard.set(currentOx, forKey: "current_oxygen")
         let oxPerc = round((Float(currentOx) / Float(startOx))*1000) / 10
         oxLife.text = "Oxygen life: \(oxPerc)%"
         let hours = Int(currentOx) / 3600
@@ -46,8 +82,60 @@ class BioViewController: UIViewController {
         }
     }
     
-    @IBAction func resetOxygen() {
+    //let pedometer:CMPedometer! = nil
+    let pedometer = CMPedometer()
+    let health: HKHealthStore = HKHealthStore()
+    let heartRateUnit:HKUnit = HKUnit(from: "count/min")
+    let heartRateType:HKQuantityType   = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+    var heartRateQuery:HKSampleQuery?
+    
+    func updateSteps() {
+        pedometer.queryPedometerData(from: NSDate().addingTimeInterval(-86400) as Date, to: NSDate() as Date, withHandler: { (data, error) -> Void in
+            
+            if let data = data {
+                let numSteps = data.numberOfSteps
+                let distance = data.distance
+                
+                DispatchQueue.main.async {
+                    self.distenceWalked.text = "Distance walked: \(distance) ft"
+                    self.stepsWalked.text = "Steps walked: \(numSteps)"
+                }
+            }
+        })
+    }
+    
+    
+    
+    func updateBPM() {
+        /*
+        let calendar = NSCalendar.current
+        let startDate = NSDate().addingTimeInterval(-86400) as Date
+        let endDate = NSDate()
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate as Date, options: [])
         
+        //descriptor
+        let sortDescriptors = [
+            NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        ]
+        
+        heartRateQuery = HKSampleQuery(sampleType: heartRateType,
+                                       predicate: predicate,
+                                       limit: 25,
+                                       sortDescriptors: sortDescriptors,
+                                       resultsHandler: {(query, results, error) -> Void in
+                                        let resultsQ = results as? [HKQuantitySample]
+                                        self.distenceWalked.text = "Distance walked: \(resultsQ?.quantity)"
+                                        self.stepsWalked.text = "Steps walked: \(results.numberOfSteps)"
+                                        print("completion called")
+                                        
+        })
+        
+        health.execute(heartRateQuery!)*/
+    }
+
+    
+    @IBAction func resetOxygen() {
+ 
     }
 
     override func didReceiveMemoryWarning() {
