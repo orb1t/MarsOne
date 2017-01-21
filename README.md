@@ -12,3 +12,24 @@
 
 
 ## Walk through Zach's data diagram 
+
+
+### Clock
+* MTC Time and date
+
+### Bio Monitor
+* Oxygen tracking (life and time)
+* Steps walked and total distance walked (resets at midnight every day)
+* Heart rate (current and average)
+
+### Compass
+* Mars GPS coordinates
+* Compass that points towards either base camp or north
+
+### Weather
+* Current weather status
+* Sandstorms nearby
+
+## Mission
+* See current mission
+* Recieve alerts from Houston
