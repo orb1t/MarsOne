@@ -9,4 +9,6 @@
 ```MTCseconds = (seconds since 1/1/2000 00:00:00 UTC)*(86400/88775.244)) + 44795.998```
 
 **Figure out what this has been converted to**
- 
+
+
+## Walk through Zach's data diagram 
