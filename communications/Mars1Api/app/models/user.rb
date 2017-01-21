@@ -31,7 +31,8 @@ class User
   field :lon, type: Float
   field :lad, type: Float
   field :avg_heart_rate, type: Integer
-
+  field :mission, type: String
+  field :alert, type: String
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
