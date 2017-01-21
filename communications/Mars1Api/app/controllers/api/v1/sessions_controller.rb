@@ -12,7 +12,7 @@ module Api
           @user = User.find_by(email: @email)
           if @user && @user.valid_password?(@password)
             @user.update_attributes(authentication_token: SecureRandom.base64(20))
-            render json: { status: 200, email: @user.email, authentication_token: @user.authentication_token }
+            render json: { status: 200, id: @user.id ,email: @user.email, authentication_token: @user.authentication_token }
           else
             render json: {}, status: :unauthorized
           end
