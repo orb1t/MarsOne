@@ -10,12 +10,20 @@ module Api
 
       def update
 
-        @user = current_user
-          if @user.update_attributes(user_params)
-            respond_with @user
-          else
-            respond_with(status: :unprocessable_entity)
-          end
+        @user = User.find(params[:id])
+        if @user.update_attributes(user_params)
+
+          render json: {id: @user.id, email: @user.email, heart_rate: @user.heart_rate, distance: @user.distance,
+                        avg_heart_rate: @user.avg_heart_rate, steps: @user.steps, lon: @user.lon, lad: @user.lad,
+                        mission: @user.mission, alert: @user.alert}
+        else
+           respond_with(status: :unprocessable_entity)
+        end
+          # if @user.update_attributes(user_params)
+          #   respond_with @user
+          # else
+          #   respond_with(status: :unprocessable_entity)
+          # end
       end
 
       def get_alert
@@ -28,7 +36,7 @@ module Api
       private
 
       def user_params
-        params.permit(:heart_rate, :distance, :avg_hear_rate, :steps, :lon, :lad, :mission, :alert)
+        params.permit(:heart_rate, :distance, :avg_heart_rate, :steps, :lon, :lad, :mission, :alert)
       end
 
 

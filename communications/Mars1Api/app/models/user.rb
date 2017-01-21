@@ -1,4 +1,5 @@
 class User
+  # write validation to ensure email is @nasa.gov only
   #acts_as_token_authenticatable
   include Mongoid::Document
   # store_in database: ->{ Thread.current[:database] }
@@ -33,6 +34,7 @@ class User
   field :avg_heart_rate, type: Integer
   field :mission, type: String
   field :alert, type: String
+  #index({ starred: 1 })
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time
