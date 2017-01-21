@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="rZk-ix-3Bj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login background" translatesAutoresizingMaskIntoConstraints="NO" id="rZk-ix-3Bj">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <color key="backgroundColor" red="0.51796478426395942" green="0.51796478426395942" blue="0.51796478426395942" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -42,6 +42,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background1" width="2208" height="1242"/>
+        <image name="login background" width="736" height="414"/>
     </resources>
 </document>

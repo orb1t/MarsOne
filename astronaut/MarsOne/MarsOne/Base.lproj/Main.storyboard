@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,7 +43,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eg-1s-nTM">
                                 <rect key="frame" x="261" y="244" width="145" height="30"/>
@@ -51,6 +52,9 @@
                                     <constraint firstAttribute="width" constant="145" id="zJr-q1-3sX"/>
                                 </constraints>
                                 <state key="normal" image="login button"/>
+                                <connections>
+                                    <action selector="loginButton" destination="O63-qx-zBO" eventType="touchUpInside" id="Som-Ud-uB2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,15 +72,20 @@
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="loginField" destination="HK4-n4-6hQ" id="4gx-e4-fs1"/>
+                        <outlet property="passwordField" destination="3AJ-B6-cuT" id="zck-RA-Ce8"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="login_to_bio" id="1Pg-3u-FMy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O63-qx-zBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33.733133433283363" y="-722.39999999999998"/>
+            <point key="canvasLocation" x="34" y="-822"/>
         </scene>
-        <!--View Controller-->
+        <!--Bio View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MarsOne" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BioViewController" customModule="MarsOne" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -88,13 +97,103 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="m6X-Lv-3kO">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8f-qh-Cn5">
+                                <rect key="frame" x="401" y="14" width="176" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="QKU-Zw-Foo"/>
+                                    <constraint firstAttribute="height" constant="36" id="Yjd-lV-6xq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.24183058375634514" green="0.24183058375634514" blue="0.24183058375634514" alpha="0.26674871575342468" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sol 000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rr9-EL-cdp">
+                                <rect key="frame" x="468" y="58" width="109" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="E7Z-co-nfZ"/>
+                                    <constraint firstAttribute="height" constant="36" id="jj5-5j-TBO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.19410851883561644" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q30-VF-ETZ">
+                                <rect key="frame" x="596" y="0.0" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="300-On-vog"/>
+                                    <constraint firstAttribute="width" constant="71" id="R9a-aW-mcg"/>
+                                </constraints>
+                                <state key="normal" image="Bio Icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N72-HK-d56">
+                                <rect key="frame" x="596" y="71" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="71" id="4rH-Gd-QlR"/>
+                                    <constraint firstAttribute="width" constant="71" id="BOA-8E-3Tl"/>
+                                    <constraint firstAttribute="height" constant="71" id="hCC-mg-jQs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="71" id="kyL-Ix-tym"/>
+                                </constraints>
+                                <state key="normal" image="Compass Icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-oq-v99">
+                                <rect key="frame" x="596" y="142" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="3K8-ei-BIh"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="71" id="Lm8-3r-uWP"/>
+                                    <constraint firstAttribute="width" constant="71" id="MWj-ED-dyf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="71" id="Z5Q-E8-Wtd"/>
+                                    <constraint firstAttribute="height" constant="71" id="iqY-Ot-4pm"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="71" id="ySX-HQ-5a1"/>
+                                </constraints>
+                                <state key="normal" image="Weather Icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7V2-qI-3j9">
+                                <rect key="frame" x="596" y="213" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="2Z6-BT-hrv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="71" id="EjQ-nZ-BAV"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="71" id="P7x-ug-xpU"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="71" id="V12-Qj-RhF"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="jzf-uF-GmI"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="71" id="lp7-IM-pRc"/>
+                                    <constraint firstAttribute="height" constant="71" id="oHC-3n-NAU"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="yYz-qg-QNm"/>
+                                </constraints>
+                                <state key="normal" image="Alert Icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEe-at-ULc">
+                                <rect key="frame" x="612" y="325" width="38" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="2Nz-oe-EwQ"/>
+                                    <constraint firstAttribute="height" constant="38" id="gb7-Di-KEJ"/>
+                                </constraints>
+                                <state key="normal" image="More Icon"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="f8f-qh-Cn5" secondAttribute="trailing" constant="70" id="7MB-AZ-Qho"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rr9-EL-cdp" secondAttribute="trailing" constant="70" id="8kD-wt-mXO"/>
+                            <constraint firstItem="Rr9-EL-cdp" firstAttribute="top" secondItem="f8f-qh-Cn5" secondAttribute="bottom" constant="8" id="Dpm-bL-IC8"/>
+                            <constraint firstItem="N72-HK-d56" firstAttribute="top" secondItem="Q30-VF-ETZ" secondAttribute="bottom" id="Gvb-vd-MiJ"/>
+                            <constraint firstItem="Q30-VF-ETZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HJ0-WV-Dph"/>
+                            <constraint firstAttribute="trailing" secondItem="Q30-VF-ETZ" secondAttribute="trailing" id="Hgk-8V-BH0"/>
                             <constraint firstItem="m6X-Lv-3kO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Igx-SD-JK1"/>
+                            <constraint firstItem="f8f-qh-Cn5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="Knt-dv-DTP"/>
+                            <constraint firstAttribute="trailing" secondItem="rEe-at-ULc" secondAttribute="trailing" constant="17" id="Wi2-qP-KJ6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rEe-at-ULc" secondAttribute="bottom" constant="12" id="YKF-Yl-MDu"/>
                             <constraint firstItem="m6X-Lv-3kO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="azh-NQ-Fbs"/>
+                            <constraint firstAttribute="trailing" secondItem="9pD-oq-v99" secondAttribute="trailing" id="cYE-gc-XYb"/>
+                            <constraint firstAttribute="trailing" secondItem="N72-HK-d56" secondAttribute="trailing" id="d36-3h-drZ"/>
                             <constraint firstAttribute="trailing" secondItem="m6X-Lv-3kO" secondAttribute="trailing" id="eEi-o5-eOg"/>
+                            <constraint firstAttribute="trailing" secondItem="7V2-qI-3j9" secondAttribute="trailing" id="lX9-Tv-5JF"/>
+                            <constraint firstItem="9pD-oq-v99" firstAttribute="top" secondItem="N72-HK-d56" secondAttribute="bottom" id="mIm-oJ-bLR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="m6X-Lv-3kO" secondAttribute="bottom" id="s0W-jd-Leg"/>
+                            <constraint firstItem="7V2-qI-3j9" firstAttribute="top" secondItem="9pD-oq-v99" secondAttribute="bottom" id="zBB-vx-MMV"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -105,6 +204,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Alert Icon" width="51" height="47"/>
+        <image name="Bio Icon" width="51" height="40"/>
+        <image name="Compass Icon" width="53" height="53"/>
+        <image name="More Icon" width="38" height="38"/>
+        <image name="Weather Icon" width="51" height="36"/>
         <image name="background1" width="2208" height="1242"/>
         <image name="login background" width="736" height="414"/>
         <image name="login button" width="145" height="30"/>
