@@ -1,0 +1,21 @@
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+
+
+public class Framework {
+	
+	static Runnable loop = new Runnable() {
+		public void run(){
+			System.out.println("Waddup, yo?");
+		}
+		
+	};
+	
+	public static void main(String []args){
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+		executor.scheduleAtFixedRate(loop, 0, 5, TimeUnit.SECONDS);
+	}
+};
