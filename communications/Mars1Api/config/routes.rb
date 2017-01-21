@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-
+  devise_for :user
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       devise_for :users, controller: { sessions: 'sessions'}
       patch '/users/update'
       delete 'sessions/:id/sign_out' => 'sessions#destroy'
-      get 'create' => 'mars_reports#create'
+      get 'import_nasa_data' => 'mars_reports#import_nasa_data'
+      get 'index' => 'mars_reports#index'
+      get 'update_nasa_data' => 'mars_reports#update_nasa_data'
+      patch 'users/update/:id' => 'users#update'
+      get 'users/get_alert' => 'users#get_alert'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
