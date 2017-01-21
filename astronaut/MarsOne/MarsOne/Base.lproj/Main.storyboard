@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nju-A0-MIc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -173,30 +173,116 @@
                                 </constraints>
                                 <state key="normal" image="More Icon"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSu-pH-vcS">
+                                <rect key="frame" x="38" y="100" width="47" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0m8-jL-9lM"/>
+                                    <constraint firstAttribute="width" constant="47" id="DRg-gy-1G5"/>
+                                </constraints>
+                                <state key="normal" image="O2 Icon"/>
+                                <connections>
+                                    <action selector="resetOxygen" destination="dkx-z0-nzr" eventType="touchUpInside" id="SNI-iR-Lgj"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Steps Icon1" translatesAutoresizingMaskIntoConstraints="NO" id="wUs-sf-nXD">
+                                <rect key="frame" x="38" y="173" width="44" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="LaS-TY-UXd"/>
+                                    <constraint firstAttribute="height" constant="65" id="chs-v7-dby"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BPM Icon1" translatesAutoresizingMaskIntoConstraints="NO" id="4I8-O1-9HR">
+                                <rect key="frame" x="29" y="272" width="63" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="0JR-5U-BcB"/>
+                                    <constraint firstAttribute="width" constant="63" id="MOS-HN-XD0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oxygen life: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yB1-zx-agn">
+                                <rect key="frame" x="110" y="99" width="172" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oxygen time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0V-ev-YqU">
+                                <rect key="frame" x="110" y="124" width="208" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steps walked: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnG-VW-x36">
+                                <rect key="frame" x="110" y="182" width="142" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance walked: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW0-sm-Im6">
+                                <rect key="frame" x="110" y="207" width="142" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heart rate: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYe-0e-11e">
+                                <rect key="frame" x="110" y="284" width="142" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg heart rate: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgR-CB-xKf">
+                                <rect key="frame" x="110" y="309" width="142" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4I8-O1-9HR" firstAttribute="top" secondItem="wUs-sf-nXD" secondAttribute="bottom" constant="34" id="5J4-Ur-mYq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="f8f-qh-Cn5" secondAttribute="trailing" constant="70" id="7MB-AZ-Qho"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rr9-EL-cdp" secondAttribute="trailing" constant="70" id="8kD-wt-mXO"/>
+                            <constraint firstItem="nSu-pH-vcS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Ady-Qy-D0w"/>
                             <constraint firstItem="Rr9-EL-cdp" firstAttribute="top" secondItem="f8f-qh-Cn5" secondAttribute="bottom" constant="8" id="Dpm-bL-IC8"/>
+                            <constraint firstItem="nSu-pH-vcS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="GOt-D0-FJI"/>
                             <constraint firstItem="N72-HK-d56" firstAttribute="top" secondItem="Q30-VF-ETZ" secondAttribute="bottom" id="Gvb-vd-MiJ"/>
                             <constraint firstItem="Q30-VF-ETZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="HJ0-WV-Dph"/>
                             <constraint firstAttribute="trailing" secondItem="Q30-VF-ETZ" secondAttribute="trailing" id="Hgk-8V-BH0"/>
                             <constraint firstItem="m6X-Lv-3kO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Igx-SD-JK1"/>
                             <constraint firstItem="f8f-qh-Cn5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="Knt-dv-DTP"/>
+                            <constraint firstItem="wUs-sf-nXD" firstAttribute="top" secondItem="nSu-pH-vcS" secondAttribute="bottom" constant="29" id="WBQ-Ge-JgD"/>
                             <constraint firstAttribute="trailing" secondItem="rEe-at-ULc" secondAttribute="trailing" constant="17" id="Wi2-qP-KJ6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rEe-at-ULc" secondAttribute="bottom" constant="12" id="YKF-Yl-MDu"/>
                             <constraint firstItem="m6X-Lv-3kO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="azh-NQ-Fbs"/>
                             <constraint firstAttribute="trailing" secondItem="9pD-oq-v99" secondAttribute="trailing" id="cYE-gc-XYb"/>
                             <constraint firstAttribute="trailing" secondItem="N72-HK-d56" secondAttribute="trailing" id="d36-3h-drZ"/>
                             <constraint firstAttribute="trailing" secondItem="m6X-Lv-3kO" secondAttribute="trailing" id="eEi-o5-eOg"/>
+                            <constraint firstItem="4I8-O1-9HR" firstAttribute="top" secondItem="wUs-sf-nXD" secondAttribute="bottom" constant="34" id="iM3-Ni-LbT"/>
+                            <constraint firstItem="4I8-O1-9HR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="9" id="lKv-kn-hCE"/>
                             <constraint firstAttribute="trailing" secondItem="7V2-qI-3j9" secondAttribute="trailing" id="lX9-Tv-5JF"/>
                             <constraint firstItem="9pD-oq-v99" firstAttribute="top" secondItem="N72-HK-d56" secondAttribute="bottom" id="mIm-oJ-bLR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4I8-O1-9HR" secondAttribute="bottom" constant="40" id="oJw-yo-ruI"/>
+                            <constraint firstItem="wUs-sf-nXD" firstAttribute="top" secondItem="nSu-pH-vcS" secondAttribute="bottom" constant="29" id="ohy-7H-zlV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="m6X-Lv-3kO" secondAttribute="bottom" id="s0W-jd-Leg"/>
+                            <constraint firstItem="wUs-sf-nXD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="vO4-Py-DBV"/>
                             <constraint firstItem="7V2-qI-3j9" firstAttribute="top" secondItem="9pD-oq-v99" secondAttribute="bottom" id="zBB-vx-MMV"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="avgHeartRate" destination="NgR-CB-xKf" id="gd6-SF-hJT"/>
+                        <outlet property="currHeartRate" destination="AYe-0e-11e" id="4O2-BK-yvi"/>
+                        <outlet property="distenceWalked" destination="TW0-sm-Im6" id="e1h-dC-Ord"/>
+                        <outlet property="oxLife" destination="yB1-zx-agn" id="hID-AC-TPT"/>
+                        <outlet property="oxTime" destination="T0V-ev-YqU" id="ljJ-wv-EPW"/>
+                        <outlet property="solLbl" destination="Rr9-EL-cdp" id="Jrz-gw-Ffa"/>
+                        <outlet property="stepsWalked" destination="vnG-VW-x36" id="2Q2-6d-vZH"/>
+                        <outlet property="timeLbl" destination="f8f-qh-Cn5" id="Qr6-RJ-utW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -205,9 +291,12 @@
     </scenes>
     <resources>
         <image name="Alert Icon" width="51" height="47"/>
+        <image name="BPM Icon1" width="216" height="198"/>
         <image name="Bio Icon" width="51" height="40"/>
         <image name="Compass Icon" width="53" height="53"/>
         <image name="More Icon" width="38" height="38"/>
+        <image name="O2 Icon" width="47" height="44"/>
+        <image name="Steps Icon1" width="117" height="195"/>
         <image name="Weather Icon" width="51" height="36"/>
         <image name="background1" width="2208" height="1242"/>
         <image name="login background" width="736" height="414"/>
