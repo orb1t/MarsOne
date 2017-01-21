@@ -1,0 +1,17 @@
+
+public class MissionControl {
+	
+	ServerInterface serverIf;
+	WeatherGenerator weatherGen;
+	
+	public void initializeData(){
+		System.out.println("Data Initialized from Mission Control.");
+	}
+	
+	public void updateData(){
+		serverIf.getWeatherData();
+		serverIf.getAstronautData()
+		
+	}
+	
+}

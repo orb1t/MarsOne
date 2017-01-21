@@ -1,0 +1,31 @@
+
+public class RoverData {
+	
+	private String terrestrialDate;
+	private int sol;
+	private int ls;
+	private int minTemp;
+	private int minTempFahrenheit;
+	private int maxTemp;
+	private int maxTempFahrenheit;
+	private int pressure;
+	private String pressureString;
+	private String atmoOpacity;
+	private String season;
+	private String sunrise;
+	private String sunset;
+	
+	public RoverData(String terrestrialDate, int sol, int ls, int minTemp, int minTempFahrenheit,
+			int maxTemp, int maxTempFahrenheit, int pressure, String pressureString, String atmoOpacity,
+			String season, String sunrise, String sunset){
+		
+		this.terrestrialDate = terrestrialDate;
+		this.sol = sol;
+		this.ls = ls;
+		this.minTemp = minTemp;
+		this.minTempFahernheir = minTempFehrenheit;
+		
+		
+		
+	}
+}

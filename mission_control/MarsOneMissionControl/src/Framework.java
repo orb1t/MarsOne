@@ -3,14 +3,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-
-
 public class Framework {
 
 	private static Framework instance;
 	
 	private MissionControl missionControl;
-	private boolean initialized;
 	
 	public static Framework instance () {
 		if (instance == null) {
@@ -26,20 +23,15 @@ public class Framework {
 	}
 	
 	private class Initializer implements Runnable {
-		
 		public void run(){
-			if(initialized){
-				missionControl.updateData();
-			} else {
-				missionControl.initializeData();
-				initialized = true;
-			} // end if
-		} // end run
-	
+			missionControl.updateData();
+		}
 	}
 	
 	private void initialize() {
 		Initializer initializer = new Initializer();
+		
+		missionControl.initializeData();
 		
 		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 		executor.scheduleAtFixedRate(initializer, 0, 5, TimeUnit.SECONDS);

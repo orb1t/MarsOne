@@ -1,0 +1,10 @@
+
+public class ServerInterface {
+	
+	String ip;
+	
+	Public ServerInterface {
+		this.ip = 
+	}
+	
+}
