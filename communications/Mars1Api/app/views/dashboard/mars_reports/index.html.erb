@@ -4,7 +4,7 @@
   </div>
   <% @reports.each do |x| %>
   <div class="col-md-6">
-    <div class="panel-default">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <p><b>Terrestrial Date: </b><%= x.terrestrial_date %></p>
       </div>
@@ -29,9 +29,9 @@
                 <li class="list-group-item"><b>Atmo Opacity: </b><%= x.atmo_opacity %></li>
               </ul>
             </div>
-          </div>
         </div>
       </div>
+    </div>
 
   <% end %>
 </div>
