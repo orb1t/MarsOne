@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nju-A0-MIc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login background" translatesAutoresizingMaskIntoConstraints="NO" id="1Lj-dq-b8h">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="john@nasa.gov" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-n4-6hQ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-n4-6hQ">
                                 <rect key="frame" x="163" y="158" width="341" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="341" id="7Hp-xg-peh"/>
@@ -36,7 +36,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-B6-cuT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3AJ-B6-cuT">
                                 <rect key="frame" x="163" y="196" width="341" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Z4f-jf-a9I"/>
@@ -111,7 +111,7 @@
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sol 568" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rr9-EL-cdp">
-                                <rect key="frame" x="468" y="58" width="109" height="36"/>
+                                <rect key="frame" x="448" y="58" width="109" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="109" id="E7Z-co-nfZ"/>
                                     <constraint firstAttribute="height" constant="36" id="jj5-5j-TBO"/>
@@ -276,7 +276,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ycL-jr-5Hx" secondAttribute="bottom" constant="45" id="0bP-Yu-UWR"/>
                             <constraint firstItem="4I8-O1-9HR" firstAttribute="top" secondItem="wUs-sf-nXD" secondAttribute="bottom" constant="34" id="5J4-Ur-mYq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="f8f-qh-Cn5" secondAttribute="trailing" constant="70" id="7MB-AZ-Qho"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rr9-EL-cdp" secondAttribute="trailing" constant="70" id="8kD-wt-mXO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rr9-EL-cdp" secondAttribute="trailing" constant="90" id="8kD-wt-mXO"/>
                             <constraint firstItem="nSu-pH-vcS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Ady-Qy-D0w"/>
                             <constraint firstItem="Rr9-EL-cdp" firstAttribute="top" secondItem="f8f-qh-Cn5" secondAttribute="bottom" constant="8" id="Dpm-bL-IC8"/>
                             <constraint firstItem="nSu-pH-vcS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="GOt-D0-FJI"/>
@@ -741,6 +741,7 @@
                         <outlet property="compassImg" destination="XAE-sT-Pj4" id="2Zk-gO-xks"/>
                         <outlet property="latLbl" destination="um3-Ek-xN2" id="jeG-fn-baT"/>
                         <outlet property="lonLbl" destination="hgB-uY-Ecy" id="bf1-1C-1Hm"/>
+                        <outlet property="segmentedControl" destination="HNM-mT-b4j" id="F4S-04-ZpC"/>
                         <outlet property="solLbl" destination="oxm-zI-EQb" id="kLQ-3p-Umf"/>
                         <outlet property="timeLbl" destination="1P3-wH-J3v" id="iBR-1E-Bgm"/>
                     </connections>
@@ -1081,10 +1082,10 @@
         <image name="login button" width="145" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IFd-Ei-QQI"/>
-        <segue reference="ZPz-UX-NcK"/>
-        <segue reference="A1R-2f-RCQ"/>
-        <segue reference="Thd-TW-wuh"/>
-        <segue reference="KtE-RL-ISV"/>
+        <segue reference="eeT-nL-bcq"/>
+        <segue reference="Rj9-O5-3oZ"/>
+        <segue reference="tFr-WD-MMs"/>
+        <segue reference="eSP-aY-k41"/>
+        <segue reference="O6J-XJ-U1m"/>
     </inferredMetricsTieBreakers>
 </document>

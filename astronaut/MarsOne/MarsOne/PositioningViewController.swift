@@ -54,7 +54,7 @@ class PositioningViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        print(newHeading)
+        //print(newHeading)
         let currentLoc = locationManager.location?.coordinate
         
         var destination = CLLocation()
@@ -68,20 +68,26 @@ class PositioningViewController: UIViewController, CLLocationManagerDelegate {
             }
         } else {
             let degrees = newHeading.magneticHeading
-            let cgaRotate = CGAffineTransform(rotationAngle: CGFloat(self.degreesToRadians(degrees: degrees)))
+            let cgaRotate = CGAffineTransform(rotationAngle: 0 - CGFloat(self.degreesToRadians(degrees: degrees)))
             compassImg.transform = cgaRotate
         }
     }
     
     @IBAction func indexChanged(sender:UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex {
-            case 0:
-                isNorth = false
-            case 1:
-                isNorth = true
-            default:
-                break;
-            }
+        if segmentedControl.selectedSegmentIndex == 0 {
+            isNorth = false
+        } else {
+            isNorth = true
+        }
+        
+//        switch segmentedControl.selectedSegmentIndex {
+//            case 0:
+//                isNorth = false
+//            case 1:
+//                isNorth = true
+//            default:
+//                break;
+//            }
         }
     
     func getHeadingForDirectionFromCoordinate(fromLoc: CLLocationCoordinate2D, toLoc: CLLocationCoordinate2D) -> Double {
