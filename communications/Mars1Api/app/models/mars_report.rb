@@ -18,4 +18,6 @@ class MarsReport
   field :sunrise, type: String
   field :sunset, type: String
 
+  validates :terrestrial_date, uniqueness: true 
+
 end

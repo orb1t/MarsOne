@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'index' => 'mars_reports#index'
       get 'update_nasa_data' => 'mars_reports#update_nasa_data'
       patch 'users/update/:id' => 'users#update'
+      get 'users' => 'users#index'
       get 'users/get_alert' => 'users#get_alert'
     end
   end

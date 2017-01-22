@@ -1,6 +1,6 @@
 class User
   # write validation to ensure email is @nasa.gov only
-  #acts_as_token_authenticatable
+  # acts_as_token_authenticatable
   include Mongoid::Document
   # store_in database: ->{ Thread.current[:database] }
   # Include default devise modules. Others available are:
@@ -30,10 +30,12 @@ class User
   field :steps, type: Integer
   field :distance, type: Float
   field :lon, type: Float
-  field :lad, type: Float
+  field :lat, type: Float
   field :avg_heart_rate, type: Integer
   field :mission, type: String
   field :alert, type: String
+  field :oxygen_time, type: Integer
+  field :oxygen_life, type: Float
   #index({ starred: 1 })
   ## Confirmable
   # field :confirmation_token,   type: String
