@@ -28,13 +28,14 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let r = Just.get("http://10.0.1.5:3000/mars_report/show_latest")
+        let r = Just.get("http://10.0.1.5:3000/api/v1/mars_report/show_latest")
         weatherData = r.json! as! NSDictionary
-        minTempC.text = "Min temp (C): \(weatherData["min_temp"] as! String)"
-        minTempF.text = "Min temp (F): \(weatherData["min_temp_fahrenheit"] as! String)"
-        maxTempC.text = "Max temp (C): \(weatherData["max_temp"] as! String)"
-        maxTempF.text = "Max temp (F): \(weatherData["min_temp_fahrenheit"] as! String)"
-        pressure.text = "Pressure: \(weatherData["pressure"] as! String) mmHg"
+        print(weatherData)
+        minTempC.text = "Min temp (C): \(weatherData["min_temp"] as! Float)"
+        minTempF.text = "Min temp (F): \(weatherData["min_temp_fahrenheit"] as! Float)"
+        maxTempC.text = "Max temp (C): \(weatherData["max_temp"] as! Float)"
+        maxTempF.text = "Max temp (F): \(weatherData["max_temp_fahrenheit"] as! Float)"
+        pressure.text = "Pressure: \(weatherData["pressure"] as! Int) mmHg"
         sunrise.text = "Sunrise: \(weatherData["sunrise"] as! String)"
         sunset.text = "Sunset: \(weatherData["sunset"] as! String)"
         

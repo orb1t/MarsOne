@@ -10,6 +10,7 @@ import UIKit
 import HealthKit
 import CoreMotion
 import CoreLocation
+import AVFoundation
 
 class BioViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -39,6 +40,19 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
                 return nil
             }
         }()
+        
+        //let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath:Bundle.main.path(forResource: "siren", ofType: "mp3")!))
+        //player?.play()
+        
+        
+        
+//        do {
+//            avPlayer = AVPlayer(URL: url)
+//            
+//            
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
         
         let imageData = try? Data(contentsOf: Bundle(for: BioViewController.self).url(forResource: "heartbeat", withExtension: ".gif")!) as Data
         heartbeat.image = UIImage.gif(data: imageData!)
@@ -108,6 +122,26 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
         if currentOx <= 0 {
             currentOx = 0
         }
+        
+        var avPlayer: AVPlayer!
+        
+//        let url = Bundle.main.url(forResource: "siren", withExtension: "mp3")!
+//        avPlayer = AVPlayer(url: url)
+//        avPlayer.play()
+        
+//        var audioPlayer:AVAudioPlayer!
+//        var audioFilePath = Bundle.main.path(forResource: "siren", ofType: "mp3")
+//        
+//        if audioFilePath != nil {
+//            
+//            var audioFileUrl = NSURL.fileURL(withPath: audioFilePath!)
+//            
+//            audioPlayer = AVAudioPlayer(contentsOfURL: audioFileUrl, error: nil)
+//            audioPlayer.play()
+//            
+//        } else {
+//            print("audio file is not found")
+//        }
     }
     
     func updateTime() {        
@@ -231,7 +265,19 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
             if newAlertTitle != oldAlertTitle {
                 let alert = (data["alert"] as! String)
                 let title = (data["alert_title"] as! String)
+                let sfxInt = (data["alert_sound"] as! Int)
                 self.presentAlert(title: title, message: alert)
+                
+                var sfx = ""
+                if sfxInt == 3 {
+                    sfx = "siren"
+                } else if sfxInt == 1 {
+                    
+                }
+                
+                let player = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath:Bundle.main.path(forResource: sfx, ofType: "mp3")!))
+                player?.play()
+                
                 UserDefaults.standard.set(title, forKey: "alert_title")
                 UserDefaults.standard.set(alert, forKey: "alert")
             }

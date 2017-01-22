@@ -24,6 +24,8 @@
 		88DDF2E61E3483E6009535BA /* heartbeat.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2E51E3483E6009535BA /* heartbeat.gif */; };
 		88DDF2E81E348926009535BA /* heartbeat1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2E71E348926009535BA /* heartbeat1.gif */; };
 		88DDF2EA1E348D6C009535BA /* heartbeat2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2E91E348D6C009535BA /* heartbeat2.gif */; };
+		88DDF2EC1E34BE1A009535BA /* siren.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 88DDF2EB1E34BE1A009535BA /* siren.mp3 */; };
+		88DDF2EE1E34C717009535BA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF2ED1E34C717009535BA /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		88DDF2E51E3483E6009535BA /* heartbeat.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = heartbeat.gif; sourceTree = "<group>"; };
 		88DDF2E71E348926009535BA /* heartbeat1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = heartbeat1.gif; sourceTree = "<group>"; };
 		88DDF2E91E348D6C009535BA /* heartbeat2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = heartbeat2.gif; sourceTree = "<group>"; };
+		88DDF2EB1E34BE1A009535BA /* siren.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siren.mp3; sourceTree = "<group>"; };
+		88DDF2ED1E34C717009535BA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DDF2DC1E336365009535BA /* HealthKit.framework in Frameworks */,
+				88DDF2EE1E34C717009535BA /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +141,7 @@
 				88DDF2E91E348D6C009535BA /* heartbeat2.gif */,
 				88DDF2E71E348926009535BA /* heartbeat1.gif */,
 				88DDF2E51E3483E6009535BA /* heartbeat.gif */,
+				88DDF2EB1E34BE1A009535BA /* siren.mp3 */,
 			);
 			path = MarsOne;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 		88DDF2DA1E336365009535BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88DDF2ED1E34C717009535BA /* AudioToolbox.framework */,
 				88DDF2DB1E336365009535BA /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -240,6 +247,9 @@
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
 						};
 					};
 					88DDF2B51E33047E009535BA = {
@@ -284,6 +294,7 @@
 				88DDF2EA1E348D6C009535BA /* heartbeat2.gif in Resources */,
 				88DDF2B01E33047E009535BA /* LaunchScreen.storyboard in Resources */,
 				88DDF2E61E3483E6009535BA /* heartbeat.gif in Resources */,
+				88DDF2EC1E34BE1A009535BA /* siren.mp3 in Resources */,
 				88DDF2E81E348926009535BA /* heartbeat1.gif in Resources */,
 				88DDF2AD1E33047E009535BA /* Assets.xcassets in Resources */,
 				88DDF2AB1E33047E009535BA /* Main.storyboard in Resources */,
