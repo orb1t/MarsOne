@@ -20,13 +20,20 @@ class MissionsViewController: UIViewController {
         
         let r = Just.get("http://10.0.1.5:3000/api/v1/users/get_alert", params: [:], headers: ["X-User-Email":UserDefaults.standard.string(forKey: "email")!, "X-User-Token":UserDefaults.standard.string(forKey: "auth_token")!])
         print(r)
-        print(r.json)
+        print(r.json!)
+        
+        let title = UserDefaults.standard.string(forKey: "alert_title")
+        self.alertButon.setTitle(title, for: .normal)
+        
+        self.missionBrief.text = UserDefaults.standard.string(forKey: "mission")
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     @IBAction func alertButton() {
-        //Get alert data from master data and display it
+        let alert = UserDefaults.standard.string(forKey: "alert")
+        let title = UserDefaults.standard.string(forKey: "alert_title")
+        self.presentAlert(title: title!, message: alert!)
     }
     
     func presentAlert(title: String, message:String) {

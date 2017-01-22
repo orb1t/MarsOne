@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             def.set(7200, forKey: "current_oxygen")
             def.set(0.0, forKey: "lon")
             def.set(0.0, forKey: "lat")
-            
+            def.set("", forKey:"alert")
+            def.set("", forKey:"alert_title")
+
             def.set(true, forKey: "hasRun")
         }
         

@@ -11,37 +11,54 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var earthTime:UILabel!
+    @IBOutlet weak var earthDate:UILabel!
     @IBOutlet weak var timeLbl:UILabel!
     @IBOutlet weak var solLbl:UILabel!
+    
+    @IBOutlet weak var minTempC:UILabel!
+    @IBOutlet weak var minTempF:UILabel!
+    @IBOutlet weak var maxTempC:UILabel!
+    @IBOutlet weak var maxTempF:UILabel!
+    @IBOutlet weak var pressure:UILabel!
+    @IBOutlet weak var sunrise:UILabel!
+    @IBOutlet weak var sunset:UILabel!
+    
+    var weatherData:NSDictionary!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let r = Just.get("http://10.0.1.5:3000/mars_report/show_latest")
+        weatherData = r.json! as! NSDictionary
+        minTempC.text = "Min temp (C): \(weatherData["min_temp"] as! String)"
+        minTempF.text = "Min temp (F): \(weatherData["min_temp_fahrenheit"] as! String)"
+        maxTempC.text = "Max temp (C): \(weatherData["max_temp"] as! String)"
+        maxTempF.text = "Max temp (F): \(weatherData["min_temp_fahrenheit"] as! String)"
+        pressure.text = "Pressure: \(weatherData["pressure"] as! String) mmHg"
+        sunrise.text = "Sunrise: \(weatherData["sunrise"] as! String)"
+        sunset.text = "Sunset: \(weatherData["sunset"] as! String)"
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateEarthTime), userInfo: nil, repeats: true)
     }
     
     func updateEarthTime() {
-        let since1970 = NSDate().timeIntervalSince1970
-        let msSince1970 = NSInteger(since1970)
-        
         let date = Date()
         let cal = Calendar(identifier: .gregorian)
         let midnight = cal.startOfDay(for: date)
         let sinceMidnight = NSDate().timeIntervalSince(midnight)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        earthDate.text = "Earth date: \(dateFormatter.string(from: date))"
         
         let hours = Int(sinceMidnight) / 3600
         let minutes = Int(sinceMidnight) / 60 % 60
         let seconds = Int(sinceMidnight) % 60
         
-        let mtc = Double(msSince1970 - 947116800) * (86400/88775.244) + 44795.9998
-        print("earth: \(msSince1970)")
-        print("mars: \(mtc)")
-        
         DispatchQueue.main.async {
-            self.earthTime.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+            self.earthTime.text = String(format:"Earth Time: %02i:%02i:%02i", hours, minutes, seconds)
         }
-        
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     func updateTime() {

@@ -21,6 +21,7 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var distenceWalked:UILabel!
     @IBOutlet weak var currHeartRate:UILabel!
     @IBOutlet weak var avgHeartRate:UILabel!
+    @IBOutlet weak var heartbeat:UIImageView!
     
     let startOx = 7200
     var currentOx = 7200
@@ -38,6 +39,11 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
                 return nil
             }
         }()
+        
+        let imageData = try? Data(contentsOf: Bundle(for: BioViewController.self).url(forResource: "heartbeat", withExtension: ".gif")!) as Data
+        heartbeat.image = UIImage.gif(data: imageData!)
+        //heartbeat.layer.borderWidth = 2
+        //heartbeat.layer.borderColor = UIColor(colorLiteralRed: 247, green: 225, blue: 201, alpha: 80).cgColor
         
         self.updateBPM()
         
@@ -77,8 +83,7 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateSteps), userInfo: nil, repeats: true)
         Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.updateBPM), userInfo: nil, repeats: true)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
-        //Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.sendData), userInfo: nil, repeats: true)
-        self.sendData()
+        Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.sendData), userInfo: nil, repeats: true)
     }
     
     func updateOxygen() {
@@ -208,13 +213,28 @@ class BioViewController: UIViewController, CLLocationManagerDelegate {
                           "oxygen_life":def.float(forKey: "oxygen_life"),
                           "oxygen_time":def.integer(forKey: "current_oxygen"),
                           "lat":def.double(forKey: "lat"),
-                          "lon":def.double(forKey: "lon"),
+                          "lon":def.double(forKey: "lon")
         ] as [String : Any]
         
-        let r = Just.patch("https://10.0.1.5:3000/api/v1/users/update/\(UserDefaults.standard.string(forKey: "id"))", params: parameters, headers: ["X-User-Email":UserDefaults.standard.string(forKey: "email")!, "X-User-Token":UserDefaults.standard.string(forKey: "auth_token")!])
+        print("http://10.0.1.5:3000/api/v1/users/update/\(UserDefaults.standard.string(forKey: "id")!)")
+        let r = Just.patch("http://10.0.1.5:3000/api/v1/users/update/\(UserDefaults.standard.string(forKey: "id")!)", params: parameters, headers: ["X-User-Email":UserDefaults.standard.string(forKey: "email")!, "X-User-Token":UserDefaults.standard.string(forKey: "auth_token")!])
         print(r)
         if r.ok {
             print(r.json!)
+            let data = r.json! as! NSDictionary
+            
+            UserDefaults.standard.set(((r.json as! NSDictionary)["mission"] as! String), forKey: "mission")
+            
+            let newAlertTitle = data["alert_title"] as! String
+            let oldAlertTitle = UserDefaults.standard.string(forKey: "alert_title")
+            
+            if newAlertTitle != oldAlertTitle {
+                let alert = (data["alert"] as! String)
+                let title = (data["alert_title"] as! String)
+                self.presentAlert(title: title, message: alert)
+                UserDefaults.standard.set(title, forKey: "alert_title")
+                UserDefaults.standard.set(alert, forKey: "alert")
+            }
         }
     }
 
