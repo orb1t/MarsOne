@@ -4,9 +4,15 @@ module Api
   module V1
     class MarsReportsController < ApplicationController
       respond_to :json
+      skip_before_filter :verify_authenticity_token
 
       def index
-        respond_with MarsReport.all.to_a # displays all mars_reports objects in json 
+        respond_with MarsReport.all.to_a # displays all mars_reports objects in json
+      end
+
+      def show_latest
+        @mars_report = MarsReport.last
+        respond_with @mars_report
       end
 
       def import_nasa_data

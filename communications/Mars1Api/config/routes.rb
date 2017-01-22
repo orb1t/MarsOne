@@ -9,10 +9,21 @@ Rails.application.routes.draw do
       get 'index' => 'mars_reports#index'
       get 'update_nasa_data' => 'mars_reports#update_nasa_data'
       patch 'users/update/:id' => 'users#update'
+      patch 'users/mc_update/:id' => 'users#mc_update'
       get 'users' => 'users#index'
       get 'users/get_alert' => 'users#get_alert'
+      get 'mars_report/show_latest' => 'mars_reports#show_latest'
     end
   end
+
+  namespace :dashboard do
+    root 'static_pages#home'
+    get 'weather/index' => 'mars_reports#index', as: "weather_index"
+    get 'users/index' => 'users#index', as: "users_index"
+    patch 'users/update_alert/:id' => 'users#update_alert', as: "update_alert"
+    patch 'users/update_mission/:id' => 'users#update_mission', as: "update_mission"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

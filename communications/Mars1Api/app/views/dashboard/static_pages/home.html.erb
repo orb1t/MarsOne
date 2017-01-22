@@ -1,0 +1,82 @@
+<div class="row">
+  <h2 class="text-center">Welcome to:<h2></p>
+  <h1 class="text-center">Mission Control</h1>
+</br>
+  <div class="col-md-12" style="padding-top:50px">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <p class="text-center">Current Status on Mars</p>
+      </div>
+      <div class="panel-body">
+        <p><i>collected data from the Curiosity Rover on Mars<i><p>
+      </div>
+      <table class="table">
+        <tr>
+          <th>Sol</th>
+          <th>Pressure</th>
+          <th>Temp High</th>
+          <th>Temp Low</th>
+          <th>Season</th>
+        </tr>
+        <tr>
+          <td><%= @mars_report.sol %></td>
+          <td><%= @mars_report.pressure %></td>
+          <td><%= @mars_report.max_temp_fahrenheit %></td>
+          <td><%= @mars_report.min_temp_fahrenheit%></td>
+          <td><%= @mars_report.season%></td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+
+
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <p>Astronaut John</p>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item"><b>Latitude: </b><%= @astro1.lat%></li>
+              <li class="list-group-item"><b>Longitude: </b><%= @astro1.lon %></li>
+              <li class="list-group-item"><b>Heart Rate: </b><%= @astro1.heart_rate %></li>
+              <li class="list-group-item"><b>Distance: </b><%= @astro1.distance %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <p>Astronaut Jan</p>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item"><b>Latitude: </b><%= @astro2.lat %></li>
+              <li class="list-group-item"><b>Longitude: </b><%= @astro2.lon %></li>
+              <li class="list-group-item"><b>Heart Rate: </b><%= @astro2.heart_rate %></li>
+              <li class="list-group-item"><b>Distance: </b><%= @astro2.heart_rate %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <p>Astronaut Zach</p>
+          </div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item"><b>Latitude: </b><%= @astro3.lat %></li>
+              <li class="list-group-item"><b>Longitude: </b><%= @astro3.lon %></li>
+              <li class="list-group-item"><b>Heart Rate: </b><%= @astro3.heart_rate %></li>
+              <li class="list-group-item"><b>Distance: </b><%= @astro3.distance %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+</div>
