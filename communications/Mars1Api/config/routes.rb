@@ -20,8 +20,10 @@ Rails.application.routes.draw do
     root 'static_pages#home'
     get 'weather/index' => 'mars_reports#index', as: "weather_index"
     get 'users/index' => 'users#index', as: "users_index"
-    patch 'users/update_alert/:id' => 'users#update_alert', as: "update_alert"
-    patch 'users/update_mission/:id' => 'users#update_mission', as: "update_mission"
+    get 'users/:id' => 'users#edit', as: "edit_users"
+    get 'users1/:id' => 'users#edit_mission', as: "edit_mission"
+    patch 'users/:id' => 'users#update_alert', as: "update_alert"
+    patch 'users1/:id' => 'users#update_mission', as: "update_mission"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

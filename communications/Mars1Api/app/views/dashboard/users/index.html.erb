@@ -7,9 +7,36 @@
       </div>
       <div class="panel-body">
         <div class="col-md-4">
+          <%= image_tag("#{x.image}", size: "300x275") %>
         </div>
+        <div class="col-md-4">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success"><b>Current Astronaut Status</b></li>
+            <li class="list-group-item"><b>Heart Rate:     </b><%= x.heart_rate %></li>
+            <li class="list-group-item"><b>Avg Heart Rate: </b><%= x.avg_heart_rate %></li>
+            <li class="list-group-item"><b>Steps:          </b><%= x.steps %></li>
+            <li class="list-group-item"><b>Oxygen Life:    </b><%= x.oxygen_life %>%</li>
+            <li class="list-group-item"><b>Oxygen Time:    </b><%= x.oxygen_time %> seconds</li>
+            <li class="list-group-item"><b>Latitude:       </b><%= x.lat %></li>
+            <li class="list-group-item"><b>Longitude:      </b><%= x.lon %></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-danger"><b>Alert: <%= x.alert_title %></b></li>
+            <li class="list-group-item"><b>Description: </b><%= x.alert %></li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><b>Mission</b></li>
+            <li class="list-group-item"><b>Description: </b><%= x.mission %></li>
+          </ul>
+          <%= link_to "Update Alert", dashboard_edit_users_path(x), class: "btn btn-primary" %>
+          <%= link_to "Update Mission", dashboard_edit_mission_path(x), class: "btn btn-primary" %>
       </div>
+
     </div>
-    <% end %>
+
   </div>
+  <% end %>
+</div>
 </div>

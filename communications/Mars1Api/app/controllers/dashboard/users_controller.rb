@@ -1,10 +1,18 @@
-module Dashboard
-  class UsersController < ApplicationController
+
+  class Dashboard::UsersController < ApplicationController
     layout "dashboard_layout"
 
     def index
       @users = User.all
     end
+
+    def edit
+      @user = User.find(params[:id])
+    end
+
+    def edit_mission
+      @user = User.find(params[:id])
+    end 
 
     def update_alert
       @user = User.find(params[:id])
@@ -37,4 +45,3 @@ module Dashboard
     end
 
   end
-end
