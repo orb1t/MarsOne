@@ -39,6 +39,7 @@ class User
   field :alert_title, type: String
   field :image, type: String
   field :alert_sound, type: Integer
+  
   #index({ starred: 1 })
   ## Confirmable
   # field :confirmation_token,   type: String

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch 'users1/:id' => 'users#update_mission', as: "update_mission"
     get 'sand_storm' => 'users#sand_storm', as: "sand_storm"
     get 'end_storm' => 'users#end_storm', as: "end_storm"
+    get 'radioactive_storm' => "users#radioactive_storm", as: "radioactive_storm" 
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

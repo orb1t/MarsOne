@@ -17,7 +17,15 @@
     def end_storm
       @users = User.all
       @users.each do |x|
-        x.update_attributes!(alert_title: "All Clear", alert: "Sand Storm has passed, you are safe to continue your work.", alert_sound: 1)
+        x.update_attributes!(alert_title: "All Clear", alert: "Storm has passed, you are safe to continue your work.", alert_sound: 1)
+      end
+      redirect_to dashboard_storm_simulator_path
+    end
+
+    def radioactive_storm
+      @users = User.all
+      @users.each do |x|
+        x.update_attributes!(alert_title: "Radiocativity Storm", alert: "A stom has formed near you and radioactive levels have also increased. Return to base immediatly", alert_sound: 2)
       end
       redirect_to dashboard_storm_simulator_path
     end
