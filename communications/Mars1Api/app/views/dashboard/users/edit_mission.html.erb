@@ -1,0 +1,19 @@
+<div class="row">
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">Mission</div>
+  <div class="panel-body">
+
+    <%= form_for([:dashboard, @user], url: {action: "update_mission"}, http: "PATCH") do |f| %>
+    <div class="field form-group">
+      <%= f.text_field :mission, class: "form-control", placeholder: "Description" %>
+    </div>
+
+    <div class="action form-group">
+      <%= f.submit "Update Mission", class: "btn btn-primary" %>
+    </div>
+ </div>
+  <% end %>
+</div>
+</div>

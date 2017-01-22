@@ -1,4 +1,50 @@
+import java.util.LinkedList;
 
 public class ServerInterface {
-
+	
+	String ip;
+	
+	public ServerInterface(){
+		this.ip = "No IP";
+	} // end ServerInterface
+	
+	public ServerInterface(String ip) {
+		this.ip = ip;
+	} // end ServerInterface
+	
+	public String getIp(){
+		return this.ip;
+	} // end getIp
+	
+	public void setIp(String ip){
+		this.ip = ip;
+	} // end setIp
+	
+	
+	public Map<String, String> getWeatherData(){
+		
+		Map<String, String> weatherData = new HashMap<String, String>();
+		weatherData.put("String1","String2");
+		return weatherData;
+		
+	} // end getWeatherData
+	
+	public Map<String, String> getAstronautData(){
+		
+		Map<String, String> astronautData = new HashMap<String, String>();
+		astronautData.put("String1","String2");
+		return weatherData;
+		
+	} // end getAstronautData
+	
+	public void sendTask(GSON){
+		
+	} // end sendTask
+	
+	public void sendAlert(GSON){
+		
+	} // end sendAlert
+	
+	
+	
 }

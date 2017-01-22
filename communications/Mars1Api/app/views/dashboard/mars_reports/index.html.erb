@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="page-header">
+    <h1>Weather Data</h1><small>This data was collected from The Curiosity Rover</small></h1>
+  </div>
+  <% @reports.each do |x| %>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <p><b>Terrestrial Date: </b><%= x.terrestrial_date %></p>
+      </div>
+      <div class="panel-body">
+
+            <div class="col-md-6">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-info"><b>Day</b></li>
+                <li class="list-group-item"><b>Sol: </b><%= x.sol %></li>
+                <li class="list-group-item"><b>Sunrise: </b><%= x.sunrise %></li>
+                <li class="list-group-item"><b>Sunset: </b><%= x.sunset %></li>
+                <li class="list-group-item"><b>Season: </b><%= x.season %></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-info"><b>Weather</b></li>
+                <li class="list-group-item"><b>Temp Low: </b><%= x.min_temp_fahrenheit %> degrees</li>
+                <li class="list-group-item"><b>Temp High: </b><%= x.max_temp_fahrenheit %> degrees</li>
+                <li class="list-group-item"><b>Pressure: </b><%= x.pressure %> mmhg</li>
+                <li class="list-group-item"><b>Wind Direction: </b><%= x.wind_direction %></li>
+                <li class="list-group-item"><b>Atmo Opacity: </b><%= x.atmo_opacity %></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

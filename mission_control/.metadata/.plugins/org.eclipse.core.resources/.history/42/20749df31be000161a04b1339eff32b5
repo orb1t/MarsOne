@@ -1,0 +1,37 @@
+
+import java.util.*;
+
+public class Astronaut {
+	
+	private String email;
+	private int stepsWalked;
+	private float distanceWalked;
+	private int currentHeartRate;
+	private int avgHeartRate;
+	private float latitude;
+	private float longitude;
+	private int oxygenLevel;
+	private LinkedList tasks[];
+	private LinkedList Alerts[];
+	
+	
+	public void setID(int id): void
+	public void setFName(String): void
+	public void setLName(String): void
+	public int getID(): int
+	public String getFName(): String
+	public String getLName(): String
+	public getStepsWalked(): int
+	public getDistanceWalked(): float
+	public getCurrentHeartRate(): int
+	public getAvgHeartRate(): int
+	public getLatitude(): float
+	public getLongitude(): float
+	public getOxygenLevel(): int
+	public getDistanceFromBase(): float
+	public checkTooFarFromBaseAlert(): Boolean
+	public checkOxygenAlert(): Boolean
+	public updateAstronaut(): void
+	
+
+}

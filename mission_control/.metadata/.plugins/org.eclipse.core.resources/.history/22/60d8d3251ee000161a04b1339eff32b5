@@ -1,0 +1,65 @@
+
+import java.util.*;
+
+public class Astronaut {
+	
+	private String email;
+	private int stepsWalked;
+	private float distanceWalked;
+	private int currentHeartRate;
+	private int avgHeartRate;
+	private float latitude;
+	private float longitude;
+	private int oxygenLevel;
+	
+	private LinkedList heartRateHist;
+	private LinkedList 
+	private LinkedList
+	
+	private LinkedList tasks[];
+	private LinkedList Alerts[];
+	
+	
+	
+	public void setEmail(String email){
+		//
+	} // end setEmail
+	
+	public String getEmail(){
+		return email;
+	} // end getEmail
+	
+	public int getStepsWalked(){
+		return stepsWalked;
+	} // end getStepsWalked
+	
+	public float getDistanceWalked(){
+		return distanceWalked;
+	} // end getDistanceWalked
+	
+	public int getCurrentHeartRate(){
+		return currentHeartRate;
+	} // end getCurrentHeartRate
+	
+	public int getAvgHeartRate(){
+		return avgHeartRate;
+	} // end getAvgHeartRate
+	
+	public float getLatitude(){
+		return latitude;
+	} // end getLatitude
+	
+	public float getLongitude(){
+		return longitude;
+	} // end getLongitude
+	
+	public int getOxygenLevel(){
+		return oxygenLevel;
+	} // end getOxygenLevel
+	
+	public void updateAstronaut(LinkedList ll){
+		
+	} // end updateAstronaut
+	
+
+}
