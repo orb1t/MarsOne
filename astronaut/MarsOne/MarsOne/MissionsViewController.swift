@@ -11,6 +11,8 @@ import UIKit
 class MissionsViewController: UIViewController {
     @IBOutlet weak var alertButon:UIButton!
     @IBOutlet weak var missionBrief:UITextView!
+    @IBOutlet weak var timeLbl:UILabel!
+    @IBOutlet weak var solLbl:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,11 +20,20 @@ class MissionsViewController: UIViewController {
         
         let r = Just.get("http://10.0.1.5:3000/api/v1/users/get_alert", params: [:], headers: ["X-User-Email":UserDefaults.standard.string(forKey: "email")!, "X-User-Token":UserDefaults.standard.string(forKey: "auth_token")!])
         print(r)
-        print(r.json)
+        print(r.json!)
+        
+        let title = UserDefaults.standard.string(forKey: "alert_title")
+        self.alertButon.setTitle(title, for: .normal)
+        
+        self.missionBrief.text = UserDefaults.standard.string(forKey: "mission")
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     @IBAction func alertButton() {
-        //Get alert data from master data and display it
+        let alert = UserDefaults.standard.string(forKey: "alert")
+        let title = UserDefaults.standard.string(forKey: "alert_title")
+        self.presentAlert(title: title!, message: alert!)
     }
     
     func presentAlert(title: String, message:String) {
@@ -39,6 +50,21 @@ class MissionsViewController: UIViewController {
             alert.tag = 1
             alert.addButton(withTitle: "Okay")
             alert.show()
+        }
+    }
+    
+    func updateTime() {
+        let date = Date()
+        let cal = Calendar(identifier: .gregorian)
+        let midnight = cal.startOfDay(for: date)
+        let sinceMidnight = (NSDate().timeIntervalSince(midnight) * 1.027491252) + 9620
+        
+        let hours = Int(sinceMidnight) / 3600
+        let minutes = Int(sinceMidnight) / 60 % 60
+        let seconds = Int(sinceMidnight) % 60
+        
+        DispatchQueue.main.async {
+            self.timeLbl.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
         }
     }
 
