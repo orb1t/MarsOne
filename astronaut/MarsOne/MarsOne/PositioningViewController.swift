@@ -34,7 +34,7 @@ class PositioningViewController: UIViewController, CLLocationManagerDelegate {
         }
         locationManager.requestWhenInUseAuthorization()
         
-        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

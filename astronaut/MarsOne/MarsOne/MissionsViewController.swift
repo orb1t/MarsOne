@@ -21,6 +21,8 @@ class MissionsViewController: UIViewController {
         let r = Just.get("http://10.0.1.5:3000/api/v1/users/get_alert", params: [:], headers: ["X-User-Email":UserDefaults.standard.string(forKey: "email")!, "X-User-Token":UserDefaults.standard.string(forKey: "auth_token")!])
         print(r)
         print(r.json)
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     @IBAction func alertButton() {

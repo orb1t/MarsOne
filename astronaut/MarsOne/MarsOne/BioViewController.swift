@@ -9,8 +9,9 @@
 import UIKit
 import HealthKit
 import CoreMotion
+import CoreLocation
 
-class BioViewController: UIViewController {
+class BioViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var timeLbl:UILabel!
     @IBOutlet weak var solLbl:UILabel!
@@ -23,6 +24,8 @@ class BioViewController: UIViewController {
     
     let startOx = 7200
     var currentOx = 7200
+    
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,18 +52,24 @@ class BioViewController: UIViewController {
                                           read: dataTypesToRead as? Set<HKObjectType>,
                                                       completion: { [unowned self] (success, error) in
                                                         if success {
-                                                            print("SUCCESS")
                                                         } else {
                                                             
                                                         }
         })
         
         //Set default O2
-        if UserDefaults.standard.object(forKey: "current_oxygen") == nil {
+        if UserDefaults.standard.object(forKey: "current_oxygen") == nil || (UserDefaults.standard.object(forKey: "current_oxygen") as! Int) <= 0 {
             UserDefaults.standard.set(currentOx, forKey: "current_oxygen")
         }
         
         currentOx = UserDefaults.standard.integer(forKey: "current_oxygen")
+        
+        //location
+        locationManager.delegate = self
+        locationManager.startUpdatingHeading()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
 
         //Set update timers
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateOxygen), userInfo: nil, repeats: true)
@@ -68,12 +77,15 @@ class BioViewController: UIViewController {
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateSteps), userInfo: nil, repeats: true)
         Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.updateBPM), userInfo: nil, repeats: true)
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
+        //Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.sendData), userInfo: nil, repeats: true)
+        self.sendData()
     }
     
     func updateOxygen() {
         currentOx = currentOx - 1
         UserDefaults.standard.set(currentOx, forKey: "current_oxygen")
         let oxPerc = round((Float(currentOx) / Float(startOx))*1000) / 10
+        UserDefaults.standard.set(oxPerc, forKey: "oxygen_life")
         oxLife.text = "Oxygen life: \(oxPerc)%"
         let hours = Int(currentOx) / 3600
         let minutes = Int(currentOx) / 60 % 60
@@ -120,7 +132,9 @@ class BioViewController: UIViewController {
             
             if let data = data {
                 let numSteps = data.numberOfSteps
+                UserDefaults.standard.set(numSteps, forKey: "number_of_steps")
                 let distance = data.distance!
+                UserDefaults.standard.set(distance, forKey: "distance")
                 
                 DispatchQueue.main.async {
                     self.distenceWalked.text = "Distance walked: \(round(Double(distance))) ft"
@@ -153,19 +167,19 @@ class BioViewController: UIViewController {
                                             if let quantity = samples.last?.quantity
                                             {
                                                 self.BPMArray.append(Int(quantity.doubleValue(for: self.heartRateUnit)))
+                                                UserDefaults.standard.set(Int(quantity.doubleValue(for: self.heartRateUnit)), forKey: "heart_beat")
                                                 var sum = 0
                                                 for i in 0...self.BPMArray.count-1 {
                                                     sum = sum + self.BPMArray[i]
                                                 }
                                                 let bpmAvg = round(Double(sum/self.BPMArray.count))
+                                                UserDefaults.standard.set(bpmAvg, forKey: "avg_heart_beat")
                                                 DispatchQueue.main.async {
                                                     self.currHeartRate.text = "Heart rate: \(round(quantity.doubleValue(for: self.heartRateUnit)))"
                                                     self.avgHeartRate.text = "Avg heart rate: \(round(bpmAvg))"
                                                 }
                                             }
-                                        }
-                                        
-                                        
+                                        }                                        
         })
         
         health.execute(heartRateQuery!)
@@ -173,7 +187,35 @@ class BioViewController: UIViewController {
 
     
     @IBAction func resetOxygen() {
- 
+        currentOx = 7200
+        UserDefaults.standard.set(7200, forKey: "current_oxygen")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLat = locationManager.location?.coordinate.latitude
+        let currentLon = locationManager.location?.coordinate.longitude
+        UserDefaults.standard.set(currentLat, forKey: "lat")
+        UserDefaults.standard.set(currentLon, forKey: "lon")
+    }
+    
+    func sendData() {
+        let def = UserDefaults.standard
+        
+        let parameters = ["steps":def.integer(forKey: "number_of_steps"),
+                          "distance":def.integer(forKey: "distance"),
+                          "heart_rate":def.integer(forKey: "heart_beat"),
+                          "avg_heart_rate":def.integer(forKey: "avg_heart_beat"),
+                          "oxygen_life":def.float(forKey: "oxygen_life"),
+                          "oxygen_time":def.integer(forKey: "current_oxygen"),
+                          "lat":def.double(forKey: "lat"),
+                          "lon":def.double(forKey: "lon"),
+        ] as [String : Any]
+        
+        let r = Just.patch("https://10.0.1.5:3000/api/v1/users/update/\(UserDefaults.standard.string(forKey: "id"))", params: parameters, headers: ["X-User-Email":UserDefaults.standard.string(forKey: "email")!, "X-User-Token":UserDefaults.standard.string(forKey: "auth_token")!])
+        print(r)
+        if r.ok {
+            print(r.json!)
+        }
     }
 
     override func didReceiveMemoryWarning() {

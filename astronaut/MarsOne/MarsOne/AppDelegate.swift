@@ -17,6 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+        
+        if UserDefaults.standard.bool(forKey: "hasRun") {
+            let def = UserDefaults.standard
+            
+            def.set(0, forKey: "number_of_steps")
+            def.set(0, forKey: "distance")
+            def.set(100, forKey: "heart_beat")
+            def.set(100, forKey: "avg_heart_beat")
+            def.set(1.0, forKey: "oxygen_life")
+            def.set(7200, forKey: "current_oxygen")
+            def.set(0.0, forKey: "lon")
+            def.set(0.0, forKey: "lat")
+            
+            def.set(true, forKey: "hasRun")
+        }
+        
         return true
     }
 

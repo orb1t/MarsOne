@@ -40,6 +40,8 @@ class WeatherViewController: UIViewController {
         DispatchQueue.main.async {
             self.earthTime.text = String(format:"%02i:%02i:%02i", hours, minutes, seconds)
         }
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     func updateTime() {
