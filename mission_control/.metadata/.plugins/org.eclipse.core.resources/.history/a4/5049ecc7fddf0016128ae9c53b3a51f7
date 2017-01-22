@@ -1,0 +1,54 @@
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+
+
+public class Framework {
+
+	private MissionControl missionControl;
+	private static boolean initialized;
+	
+	public Framework(){
+		setInitialized(false);
+	} // end init
+	
+	public void initialize(){
+		missionControl.initializeData();
+		setInitialized(true);
+	} // end initialize
+	
+	public void update(){
+		missionControl.updateData();
+	} // end update
+	
+	public void createExecutor(){
+		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+		executor.scheduleAtFixedRate(loop, 0, 5, TimeUnit.SECONDS);
+	} // end createExecutor
+	
+	Runnable loop = new Runnable() {
+		public void run(){
+			if(isInitialized()){
+				update();
+			} else {
+				initialize();
+			} // end if
+		} // end run
+	}; // end runnable loop
+	
+	public boolean isInitialized() {
+		return initialized;
+	} // end isInitialized
+
+	public void setInitialized(boolean initialized) {
+		Framework.initialized = initialized;
+	} // end setInitialized
+	
+	public static void main(String []args){
+		Framework fWork = new Framework();
+		fWork.createExecutor();
+	} // end main
+	
+}; // end class Framework

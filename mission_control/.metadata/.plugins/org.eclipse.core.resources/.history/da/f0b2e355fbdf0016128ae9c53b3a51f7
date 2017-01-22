@@ -1,0 +1,12 @@
+
+public class MissionControl {
+	
+	public void Initialize(){
+		System.out.println("Initialized from Mission Control.");
+	}
+	
+	public void Update(){
+		System.out.println("Update Data");
+	}
+	
+}

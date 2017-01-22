@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class ServerInterface {
+	
+	String ip;
+	
+	public ServerInterface(){
+		this.ip = "No IP";
+	} // end ServerInterface
+	
+	public ServerInterface(String ip) {
+		this.ip = ip;
+	} // end ServerInterface
+	
+	public String getIp(){
+		return this.ip;
+	} // end getIp
+	
+	public void setIp(String ip){
+		this.ip = ip;
+	} // end setIp
+	
+	public LinkedList getWeatherData(){
+		
+		
+		
+	} // end getWeatherData
+	
+	public HashMap getAstronautData(){
+		// get a
+		
+	} // end getAstronautData
+	
+	public void sendTask(GSON){
+		
+	} // end sendTask
+	
+	public void sendAlert(GSON){
+		
+	} // end sendAlert
+	
+	
+}

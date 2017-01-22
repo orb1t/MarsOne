@@ -1,0 +1,15 @@
+
+public class ServerInterface {
+	
+	String ip;
+	
+	public ServerInterface(){
+		this.ip = "No IP";
+	} // end ServerInterface
+	
+	public ServerInterface(String ip) {
+		this.ip = ip;
+	} // end ServerInterface
+	
+	
+}
