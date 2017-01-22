@@ -49,7 +49,7 @@ module Api
          @data = parsed_report["results"] #this parses the results of the json
          @data.each do |x|
           @z = MarsReport.find_by(terrestrial_date: x["terrestrial_date"])
-          @z.update_attributes!(sunrise: x["sunrise"],sunset: x["sunset"], wind_direction: x["wind_direction"])
+          @z.update_attributes!(sunrise: x["sunrise"],sunset: x["sunset"], wind_direction: x["wind_direction"], min_temp_fahrenheit: x["min_temp_fahrenheit"]) 
          end
          url1 = URI.parse(parsed_report["next"]) #uses the url from the next json list from nasa
          req1 = Net::HTTP::Get.new(url1.to_s)

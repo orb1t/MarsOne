@@ -7,5 +7,7 @@ module Dashboard
       @astro2 = User.find_by(email: "jan@nasa.gov")
       @astro3 = User.find_by(email: "zach@nasa.gov")
     end
+    def storm_simulator
+    end 
   end
 end

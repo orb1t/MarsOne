@@ -37,7 +37,8 @@ class User
   field :oxygen_time, type: Integer
   field :oxygen_life, type: Float
   field :alert_title, type: String
-  field :image, type: String 
+  field :image, type: String
+  field :alert_sound, type: Integer
   #index({ starred: 1 })
   ## Confirmable
   # field :confirmation_token,   type: String
