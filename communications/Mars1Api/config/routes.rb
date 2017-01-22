@@ -18,12 +18,15 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     root 'static_pages#home'
+    get 'storm_simulator' => 'static_pages#storm_simulator', as: "storm_simulator"
     get 'weather/index' => 'mars_reports#index', as: "weather_index"
     get 'users/index' => 'users#index', as: "users_index"
     get 'users/:id' => 'users#edit', as: "edit_users"
     get 'users1/:id' => 'users#edit_mission', as: "edit_mission"
     patch 'users/:id' => 'users#update_alert', as: "update_alert"
     patch 'users1/:id' => 'users#update_mission', as: "update_mission"
+    get 'sand_storm' => 'users#sand_storm', as: "sand_storm"
+    get 'end_storm' => 'users#end_storm', as: "end_storm"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

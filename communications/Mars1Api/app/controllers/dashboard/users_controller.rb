@@ -6,13 +6,29 @@
       @users = User.all
     end
 
+    def sand_storm
+      @users = User.all
+      @users.each do |x|
+        x.update_attributes!(alert_title: "Storm Incoming", alert: "A Sand Storm has been spotted near your location. Return to base.", alert_sound: 3)
+      end
+      redirect_to dashboard_storm_simulator_path
+    end
+
+    def end_storm
+      @users = User.all
+      @users.each do |x|
+        x.update_attributes!(alert_title: "All Clear", alert: "Sand Storm has passed, you are safe to continue your work.", alert_sound: 1)
+      end
+      redirect_to dashboard_storm_simulator_path
+    end
+
     def edit
       @user = User.find(params[:id])
     end
 
     def edit_mission
       @user = User.find(params[:id])
-    end 
+    end
 
     def update_alert
       @user = User.find(params[:id])

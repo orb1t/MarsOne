@@ -47,3 +47,20 @@ On Mars currently, the Curiosity Rover is collecting data on the weather pattern
 ### Missions
 
 Astronauts will be given periodic tasks to accomplish, conveniently displayed for them to go back and double check whenever. This tab includes a notification system that will alert astronauts when a sandstorm is near to their location and if there is a risk of danger.
+
+
+## Mission control
+
+Mission control is a webpage designed for the mission commander on Mars. This page collects all the data from the application, organizing it in a user-friendly view. It includes the weather data from just today, and a short data entry about each astronaut on the quest.
+
+#### Astronauts
+The astronauts page tells you everything you need to know about each member. It displays their profile photo, email, bio stats, alert, and mission.
+* Includes options to update their alerts and current mission
+
+#### Weather
+
+The weather page contains tables of data collected from the Curiosity Rover, organized by terrestrial date.
+
+#### Storm Tracker
+
+The storm tracking page details approaching sandstorms in real time, to aid mission control in keeping the astronauts as far away from them as possible.

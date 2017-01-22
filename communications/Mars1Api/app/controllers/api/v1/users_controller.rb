@@ -16,7 +16,7 @@ module Api
 
           render json: {id: @user.id, email: @user.email, heart_rate: @user.heart_rate, distance: @user.distance,
                         avg_heart_rate: @user.avg_heart_rate, steps: @user.steps, lon: @user.lon, lat: @user.lat,
-                        mission: @user.mission, alert: @user.alert, alert_title: @user.alert_title} # renders the json for all attributes
+                        mission: @user.mission, alert: @user.alert, alert_title: @user.alert_title, alert_sound: @user.alert_sound} # renders the json for all attributes
         else
            respond_with(status: :unprocessable_entity) # responds with an error
         end

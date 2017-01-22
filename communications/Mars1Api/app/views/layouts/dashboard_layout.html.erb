@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body style="background-color:#cc7a00">
   <nav class="navbar navbar-inverse">
@@ -21,7 +22,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Astronauts", dashboard_users_index_path %></li>
           <li><%= link_to "Weather", dashboard_weather_index_path %></li>
-          <li><%= link_to "Storm Simulator", "#" %></li>
+          <li><%= link_to "Storm Simulator", dashboard_storm_simulator_path %></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
