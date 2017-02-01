@@ -1,5 +1,6 @@
 public class RoverData {
 	
+    // data instantiation
 	private String terrestrialDate;
 	private int sol;
 	private int ls;
